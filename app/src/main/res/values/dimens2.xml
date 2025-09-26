@@ -1,0 +1,9 @@
+<resources>
+<dimen name="icon_size_width">76dp</dimen>
+        <dimen name="icon_size_height">70dp</dimen>
+        <dimen name="margin_large">40dp</dimen>
+        <dimen name="margin_medium">24dp</dimen>
+        <dimen name="margin_standard">16dp</dimen>
+        <dimen name="margin_small">8dp</dimen>
+        <dimen name="input_field_side_margin">80dp</dimen>
+</resources>
