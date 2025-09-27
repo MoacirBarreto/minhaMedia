@@ -1,9 +1,15 @@
 <resources>
-<dimen name="icon_size_width">76dp</dimen>
-        <dimen name="icon_size_height">70dp</dimen>
-        <dimen name="margin_large">40dp</dimen>
-        <dimen name="margin_medium">24dp</dimen>
-        <dimen name="margin_standard">16dp</dimen>
         <dimen name="margin_small">8dp</dimen>
-        <dimen name="input_field_side_margin">80dp</dimen>
+        <dimen name="margin_medium">16dp</dimen>
+        <dimen name="margin_large">24dp</dimen>
+        <dimen name="margin_xlarge">32dp</dimen>
+
+        <dimen name="icon_top_margin">32dp</dimen>
+        <dimen name="label_top_margin">24dp</dimen>
+        <dimen name="input_internal_margin_start">16dp</dimen>
+        <dimen name="input_internal_margin_end">8dp</dimen>
+        <dimen name="button_top_margin">24dp</dimen>
+        <dimen name="result_margin_horizontal">32dp</dimen>
+        <dimen name="result_top_margin">24dp</dimen>
+        <dimen name="formula_image_top_margin">24dp</dimen>
 </resources>

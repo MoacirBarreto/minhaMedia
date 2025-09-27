@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:contentDescription="@string/app_icon_description"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/logoifbranco"
         app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -144,5 +144,25 @@
         <!-- Você pode adicionar tools:text="8.75" para visualização no editor -->
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="146dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputLayoutResultadoMedia"
+        app:srcCompat="@drawable/formula1" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="173dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_center"
+        app:layout_constraintTop_toBottomOf="@+id/inputLayoutResultadoMedia"
+        app:srcCompat="@drawable/legenda1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

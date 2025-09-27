@@ -6,5 +6,5 @@
     <string name="label_nota2">Nota 2</string>
     <string name="app_name">Minha Nota Final</string>
     <string name="button_calcular_media">Calcular Média</string>
-    <string name="hint_media_final">0,00</string>
+    <string name="hint_media_final">Média da Disciplina</string>
 </resources>
