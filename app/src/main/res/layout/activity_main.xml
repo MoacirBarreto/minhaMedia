@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".MainActivity">
 
     <ImageView
@@ -98,19 +97,6 @@
             android:inputType="numberDecimal"
             android:textAlignment="center" />
     </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.slider.Slider
-        android:id="@+id/sliderNota2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/inputLayoutNota2"
-        app:layout_constraintEnd_toEndOf="@+id/inputLayoutNota2"
-        app:layout_constraintTop_toBottomOf="@+id/inputLayoutNota2"
-        android:valueFrom="0.0"
-        android:valueTo="10.0"
-        android:stepSize="0.1"
-        app:labelBehavior="visible"
-        tools:value="7.0" />
 
     <!-- Barreira para posicionar o botão abaixo de ambos os inputs -->
     <androidx.constraintlayout.widget.Barrier
@@ -118,7 +104,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="inputLayoutNota1,inputLayoutNota2,sliderNota2" />
+        app:constraint_referenced_ids="inputLayoutNota1,inputLayoutNota2" />
 
     <!-- Botão Calcular Média -->
     <Button
@@ -154,8 +140,7 @@
             android:longClickable="false"
             android:textAlignment="center"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:gravity="center_horizontal"/>
+            android:textStyle="bold" />
         <!-- Você pode adicionar tools:text="8.75" para visualização no editor -->
 
     </com.google.android.material.textfield.TextInputLayout>
