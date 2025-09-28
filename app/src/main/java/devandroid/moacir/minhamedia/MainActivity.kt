@@ -5,11 +5,16 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+
 import androidx.core.content.ContextCompat
 import com.google.android.material.slider.Slider
 import com.google.android.material.textfield.TextInputEditText
 import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
 import java.util.Locale
+import kotlin.text.format
+import kotlin.text.isNotEmpty
+import kotlin.text.toFloat
 
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     private var isUpdatingFromSlider = false
     private var isUpdatingFromEditText = false
     private val valueFormat = DecimalFormat("#.0") // Para formatar com uma casa decimal
+    private val decimalFormatter = DecimalFormat("0.0", DecimalFormatSymbols(Locale.US))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +42,9 @@ class MainActivity : AppCompatActivity() {
 
         setupInputListeners()
         setupNota2Sync()
+        setupNota1FocusListener()
+
+
 
         buttonCalcularMedia.setOnClickListener {
             calcularMedia()
@@ -47,6 +56,7 @@ class MainActivity : AppCompatActivity() {
         updateSliderNota2(initialNota2)
         calcularMediaSiPosible()
     }
+
     private fun setupInputListeners() {
         // Listener para nota1 para recalcular quando ela mudar
         editTextNota1.addTextChangedListener(object : TextWatcher {
@@ -116,11 +126,17 @@ class MainActivity : AppCompatActivity() {
             sliderNota2.value = clampedValue
         }
     }
+
     private fun limparResultado() {
         editTextResultadoMedia.setText("")
         // Use uma cor padrão ou transparente. Se o seu EditText tem um fundo padrão do tema,
         // você pode não precisar setar uma cor específica aqui, ou pode usar android.R.color.transparent
-        editTextResultadoMedia.setBackgroundColor(ContextCompat.getColor(this, R.color.corPadraoFundoFesultado)) // Supondo que você definiu esta cor
+        editTextResultadoMedia.setBackgroundColor(
+            ContextCompat.getColor(
+                this,
+                R.color.corPadraoFundoFesultado
+            )
+        ) // Supondo que você definiu esta cor
     }
 
     private fun calcularMediaSiPosible() {
@@ -133,7 +149,8 @@ class MainActivity : AppCompatActivity() {
             val nota2 = nota2Str.toFloatOrNull()
 
             if (nota1 != null && nota1 >= 0 && nota1 <= 10 &&
-                nota2 != null && nota2 >= sliderNota2.valueFrom && nota2 <= sliderNota2.valueTo) {
+                nota2 != null && nota2 >= sliderNota2.valueFrom && nota2 <= sliderNota2.valueTo
+            ) {
 
                 // Limpar erros antigos se as entradas agora são válidas
                 editTextNota1.error = null
@@ -144,11 +161,21 @@ class MainActivity : AppCompatActivity() {
                 editTextResultadoMedia.setText(df.format(media))
 
                 if (media >= 6.0f) {
-                    editTextResultadoMedia.setBackgroundColor(ContextCompat.getColor(this, R.color.corAprovadoFundo))
+                    editTextResultadoMedia.setBackgroundColor(
+                        ContextCompat.getColor(
+                            this,
+                            R.color.corAprovadoFundo
+                        )
+                    )
                 } else {
-                    editTextResultadoMedia.setBackgroundColor(ContextCompat.getColor(this, R.color.corReprovadoFundo))
+                    editTextResultadoMedia.setBackgroundColor(
+                        ContextCompat.getColor(
+                            this,
+                            R.color.corReprovadoFundo
+                        )
+                    )
                 }
-            }else {
+            } else {
                 // Se uma das notas (mesmo preenchida) for inválida no formato ou range, limpa o resultado.
                 // Erros específicos de campo serão tratados por validações mais diretas se necessário,
                 // mas para o cálculo automático, simplesmente não mostramos a média.
@@ -160,54 +187,89 @@ class MainActivity : AppCompatActivity() {
             limparResultado()
         }
     }
+
     private fun calcularMedia() {
-            val nota1Str = editTextNota1.text.toString()
-            val nota2Str = editTextNota2.text.toString()
+        val nota1Str = editTextNota1.text.toString()
+        val nota2Str = editTextNota2.text.toString()
 
-            var isValid = true // Flag para checar validade geral
+        var isValid = true // Flag para checar validade geral
 
-            if (nota1Str.isEmpty()) {
-                editTextNota1.error = "Digite a Nota 1"
+        if (nota1Str.isEmpty()) {
+            editTextNota1.error = "Digite a Nota 1"
+            isValid = false
+        } else {
+            val n1 = nota1Str.toFloatOrNull()
+            if (n1 == null || n1 < 0 || n1 > 10) {
+                editTextNota1.error = "Nota 1 inválida (0-10)"
                 isValid = false
             } else {
-                val n1 = nota1Str.toFloatOrNull()
-                if (n1 == null || n1 < 0 || n1 > 10) {
-                    editTextNota1.error = "Nota 1 inválida (0-10)"
-                    isValid = false
-                } else {
-                    editTextNota1.error = null // Limpa erro se agora estiver válido
-                }
+                editTextNota1.error = null // Limpa erro se agora estiver válido
             }
+        }
 
-            if (nota2Str.isEmpty()) {
-                editTextNota2.error = "Digite ou deslize para a Nota 2"
+        if (nota2Str.isEmpty()) {
+            editTextNota2.error = "Digite ou deslize para a Nota 2"
+            isValid = false
+        } else {
+            val n2 = nota2Str.toFloatOrNull()
+            if (n2 == null || n2 < sliderNota2.valueFrom || n2 > sliderNota2.valueTo) {
+                editTextNota2.error =
+                    "Nota 2 inválida (${valueFormat.format(sliderNota2.valueFrom)}-${
+                        valueFormat.format(sliderNota2.valueTo)
+                    })"
                 isValid = false
             } else {
-                val n2 = nota2Str.toFloatOrNull()
-                if (n2 == null || n2 < sliderNota2.valueFrom || n2 > sliderNota2.valueTo) {
-                    editTextNota2.error = "Nota 2 inválida (${valueFormat.format(sliderNota2.valueFrom)}-${valueFormat.format(sliderNota2.valueTo)})"
-                    isValid = false
-                } else {
-                    editTextNota2.error = null // Limpa erro se agora estiver válido
+                editTextNota2.error = null // Limpa erro se agora estiver válido
+            }
+        }
+        if (!isValid) {
+            limparResultado()
+            return
+        }
+
+        // Se chegou aqui, ambas as notas são válidas e não estão vazias
+        val nota1 = nota1Str.toFloat() // Já validado que não é null
+        val nota2 = nota2Str.toFloat() // Já validado que não é null
+
+        val media = (nota1 * 2 + nota2 * 3) / 5
+        val df = DecimalFormat("#.##")
+        editTextResultadoMedia.setText(df.format(media))
+
+        if (media >= 6.0f) {
+            editTextResultadoMedia.setBackgroundColor(
+                ContextCompat.getColor(
+                    this,
+                    R.color.corAprovadoFundo
+                )
+            )
+        } else {
+            editTextResultadoMedia.setBackgroundColor(
+                ContextCompat.getColor(
+                    this,
+                    R.color.corReprovadoFundo
+                )
+            )
+        }
+    }
+
+    private fun setupNota1FocusListener() {
+        editTextNota1.setOnFocusChangeListener { view, hasFocus ->
+            if (!hasFocus) { // Quando o EditText PERDE o foco
+                val text = editTextNota1.text.toString()
+                if (text.isNotEmpty()) {
+                    try {
+                        // Tenta converter para Float para validar e normalizar
+                        val number = text.toFloat()
+                        // Formata para ter sempre uma casa decimal
+                        val formattedText = decimalFormatter.format(number)
+                        editTextNota1.setText(formattedText)
+                    } catch (e: NumberFormatException) {
+                        // O texto não é um número válido, pode limpar ou mostrar erro
+                        // editTextNota1.error = "Número inválido"
+                        // ou deixar como está, dependendo da sua lógica de validação
+                    }
                 }
-            }
-            if (!isValid) {
-                limparResultado()
-                return
-            }
-
-            // Se chegou aqui, ambas as notas são válidas e não estão vazias
-            val nota1 = nota1Str.toFloat() // Já validado que não é null
-            val nota2 = nota2Str.toFloat() // Já validado que não é null
-
-            val media = (nota1 * 2 + nota2 * 3) / 5
-            val df = DecimalFormat("#.##")
-            editTextResultadoMedia.setText(df.format(media))
-
-            if (media >= 6.0f) {
-                editTextResultadoMedia.setBackgroundColor(ContextCompat.getColor(this, R.color.corAprovadoFundo))
-            } else {
-                editTextResultadoMedia.setBackgroundColor(ContextCompat.getColor(this, R.color.corReprovadoFundo))
             }
         }
     }
+}

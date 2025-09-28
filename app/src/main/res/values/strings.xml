@@ -10,5 +10,6 @@
 
     <string name="label_nota1">Nota 1</string>
     <string name="label_nota2">Nota 2</string>
+    <string name="hint_digite_nota2">Digite Nota 2</string>
 
 </resources>
