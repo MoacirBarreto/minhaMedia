@@ -1,22 +1,24 @@
 package devandroid.moacir.minhamedia
 
+
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-
 import androidx.core.content.ContextCompat
+import androidx.core.text.color
 import com.google.android.material.slider.Slider
 import com.google.android.material.textfield.TextInputEditText
+import devandroid.moacir.minhamedia.R
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.util.Locale
-import kotlin.text.format
-import kotlin.text.isNotEmpty
-import kotlin.text.toFloat
 
-
+// Unnecessary imports based on the provided code, you might want to remove them if not used elsewhere
+// import kotlin.text.format
+// import kotlin.text.isNotEmpty
+// import kotlin.text.toFloat
 class MainActivity : AppCompatActivity() {
 
     private lateinit var editTextNota1: TextInputEditText
@@ -42,8 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         setupInputListeners()
         setupNota2Sync()
-        setupNota1FocusListener()
-
+        setupNota1FocusListener() // This call is now correct as the function will be part of the class
 
 
         buttonCalcularMedia.setOnClickListener {
@@ -252,6 +253,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // MOVED INSIDE THE CLASS
     private fun setupNota1FocusListener() {
         editTextNota1.setOnFocusChangeListener { view, hasFocus ->
             if (!hasFocus) { // Quando o EditText PERDE o foco
@@ -272,4 +274,4 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-}
+} // This is the closing brace for MainActivity class

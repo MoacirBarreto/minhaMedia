@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
 
     android:layout_height="match_parent"
+
     tools:context=".MainActivity">
 
     <ImageView
@@ -101,20 +102,33 @@
             android:textAlignment="center"
             android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
-
     <com.google.android.material.slider.Slider
         android:id="@+id/sliderNota2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:stepSize="0.1"
+        app:layout_constraintStart_toStartOf="@+id/inputLayoutNota2"
+        app:layout_constraintEnd_toEndOf="@+id/inputLayoutNota2"
+        app:layout_constraintTop_toBottomOf="@+id/inputLayoutNota2"
         android:valueFrom="0.0"
         android:valueTo="10.0"
+        android:stepSize="0.1"
         app:labelBehavior="visible"
-        app:layout_constraintEnd_toEndOf="@+id/inputLayoutNota2"
-        app:layout_constraintStart_toStartOf="@+id/inputLayoutNota2"
-        app:layout_constraintTop_toBottomOf="@+id/inputLayoutNota2"
-        tools:value="7.0" />
+        tools:value="6.0" />
+
+<!--    <com.google.android.material.slider.Slider-->
+<!--        android:id="@+id/sliderNota2"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:stepSize="0.1"-->
+<!--        android:valueFrom="0.0"-->
+<!--        android:valueTo="10.0"-->
+<!--        app:labelBehavior="visible"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/inputLayoutNota2"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/inputLayoutNota2"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/inputLayoutNota2"-->
+<!--        tools:value="7.0" />-->
 
     <!-- Barreira para posicionar o botão abaixo de ambos os inputs -->
     <androidx.constraintlayout.widget.Barrier
@@ -154,12 +168,12 @@
             android:clickable="false"
             android:cursorVisible="false"
             android:focusable="false"
-            android:gravity="center_horizontal"
             android:importantForAutofill="no"
             android:longClickable="false"
             android:textAlignment="center"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:gravity="center_horizontal"/>
         <!-- Você pode adicionar tools:text="8.75" para visualização no editor -->
 
     </com.google.android.material.textfield.TextInputLayout>
