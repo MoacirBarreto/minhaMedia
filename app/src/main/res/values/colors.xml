@@ -8,9 +8,9 @@
     <color name="teal200">#FF03DAC5</color>
     <color name="teal700">#FF018786</color>
     <color name="myAppBackgroundColor">#263238</color>
-    <color name="corAprovadoFundo">#00B8D4</color>
-    <color name="corReprovadoFundo">#F50057</color>
-    <color name="corPadraoFundoFesultado">#454A64</color>
+    <color name="corAprovadoFundo">#397EF6</color>
+    <color name="corReprovadoFundo">#FDAA90</color>
+    <color name="corPadraoFundoFesultado">#00E676</color>
 
 
     <color name="electricblue">#007BFF</color>
@@ -18,9 +18,9 @@
     <color name="limegreen">#76FF03</color>
     <color name="energeticorange">#FF9100</color>
     <color name="darkgraymodern">#212121</color>
-    <color name="offwhitebg">#F5F5F5</color>
+    <color name="offwhitebg">#FFFFFF</color>
     <color name="emeraldgreenbright">#00C853</color>
-    <color name="intensered">#D50000</color>
+    <color name="intensered">#FDAA90</color>
     <color name="mediumdarkgray">#424242</color>
 
 </resources>

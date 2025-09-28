@@ -1,13 +1,13 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
             <style name="Theme.MinhaMedia" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
             <!-- Cores Primárias -->
-            <item name="colorPrimary">@color/electricblue</item>
-            <item name="colorPrimaryVariant">@color/electricblue</item>
+            <item name="colorPrimary">#A5BEA9</item>
+            <item name="colorPrimaryVariant">#97BFA0</item>
             <item name="colorOnPrimary">@color/white</item>
 
             <!-- Cores Secundárias -->
-            <item name="colorSecondary">@color/limegreen</item>
+            <item name="colorSecondary">#A0AEC0</item>
             <item name="colorSecondaryVariant">@color/limegreen</item>
             <item name="colorOnSecondary">@color/black</item>
 
@@ -19,7 +19,7 @@
             <!-- Texto sobre superfícies claras -->
 
             <!-- Status Bar Color (Opcional) -->
-            <!-- <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item> -->
+            <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
 
             <!-- Cores personalizadas para o resultado já são usadas no código Kotlin -->
         </style>

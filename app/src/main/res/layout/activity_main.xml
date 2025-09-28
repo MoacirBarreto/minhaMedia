@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/myLayout"
     android:layout_width="match_parent"
@@ -13,7 +21,7 @@
         android:id="@+id/centered_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:contentDescription="@string/app_icon_description"
         android:src="@drawable/logoifbranco"
         app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_center"
@@ -26,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.30" />
+        app:layout_constraintGuide_percent="0.2" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vertical_center"
@@ -141,15 +149,15 @@
         app:constraint_referenced_ids="inputLayoutNota1,inputLayoutNota2,sliderNota2" />
 
     <!-- Botão Calcular Média -->
-    <Button
-        android:id="@+id/buttonCalcularMedia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/button_calcular_media"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/barrier_inputs" />
+<!--    <Button-->
+<!--        android:id="@+id/buttonCalcularMedia"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:text="@string/button_calcular_media"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/barrier_inputs" />-->
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayoutResultadoMedia"
@@ -161,7 +169,7 @@
         android:hint="@string/hint_media_final"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCalcularMedia">
+        app:layout_constraintTop_toBottomOf="@+id/barrier_inputs">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextResultadoMedia"
@@ -201,3 +209,4 @@
         app:srcCompat="@drawable/legenda1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

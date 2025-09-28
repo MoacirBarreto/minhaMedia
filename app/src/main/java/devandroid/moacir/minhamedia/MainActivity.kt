@@ -7,13 +7,14 @@ import android.text.TextWatcher
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.text.color
 import com.google.android.material.slider.Slider
 import com.google.android.material.textfield.TextInputEditText
-import devandroid.moacir.minhamedia.R
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.util.Locale
+import kotlin.text.format
+import kotlin.text.isNotBlank
+import kotlin.text.toFloatOrNull
 
 // Unnecessary imports based on the provided code, you might want to remove them if not used elsewhere
 // import kotlin.text.format
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         editTextNota1 = findViewById(R.id.editTextNota1)
         editTextNota2 = findViewById(R.id.editTextNota2)
         sliderNota2 = findViewById(R.id.sliderNota2)
-        buttonCalcularMedia = findViewById(R.id.buttonCalcularMedia)
+        //buttonCalcularMedia = findViewById(R.id.buttonCalcularMedia)
         editTextResultadoMedia = findViewById(R.id.editTextResultadoMedia)
 
         setupInputListeners()
@@ -47,9 +48,10 @@ class MainActivity : AppCompatActivity() {
         setupNota1FocusListener() // This call is now correct as the function will be part of the class
 
 
-        buttonCalcularMedia.setOnClickListener {
-            calcularMedia()
-        }
+
+//        buttonCalcularMedia.setOnClickListener {
+//            calcularMedia()
+//        }
 
         // Definir um valor inicial (opcional, mas bom para consistência)
         val initialNota2 = 6.0f // Ou leia de algum savedInstanceState
@@ -150,8 +152,7 @@ class MainActivity : AppCompatActivity() {
             val nota2 = nota2Str.toFloatOrNull()
 
             if (nota1 != null && nota1 >= 0 && nota1 <= 10 &&
-                nota2 != null && nota2 >= sliderNota2.valueFrom && nota2 <= sliderNota2.valueTo
-            ) {
+                nota2 != null && nota2 >= sliderNota2.valueFrom && nota2 <= sliderNota2.valueTo) {
 
                 // Limpar erros antigos se as entradas agora são válidas
                 editTextNota1.error = null
@@ -162,21 +163,12 @@ class MainActivity : AppCompatActivity() {
                 editTextResultadoMedia.setText(df.format(media))
 
                 if (media >= 6.0f) {
-                    editTextResultadoMedia.setBackgroundColor(
-                        ContextCompat.getColor(
-                            this,
-                            R.color.corAprovadoFundo
-                        )
-                    )
+                    editTextResultadoMedia.setBackgroundColor(ContextCompat.getColor(this, R.color.corAprovadoFundo))
                 } else {
-                    editTextResultadoMedia.setBackgroundColor(
-                        ContextCompat.getColor(
-                            this,
-                            R.color.corReprovadoFundo
-                        )
-                    )
+                    editTextResultadoMedia.setBackgroundColor(ContextCompat.getColor(this, R.color.corReprovadoFundo))
                 }
-            } else {
+            }else {
+
                 // Se uma das notas (mesmo preenchida) for inválida no formato ou range, limpa o resultado.
                 // Erros específicos de campo serão tratados por validações mais diretas se necessário,
                 // mas para o cálculo automático, simplesmente não mostramos a média.
@@ -187,7 +179,8 @@ class MainActivity : AppCompatActivity() {
             // Se um dos campos estiver vazio, limpa o resultado
             limparResultado()
         }
-    }
+
+            }
 
     private fun calcularMedia() {
         val nota1Str = editTextNota1.text.toString()
