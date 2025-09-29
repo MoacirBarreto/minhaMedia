@@ -9,19 +9,15 @@
 
 
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/myLayout"
     android:layout_width="match_parent"
-
     android:layout_height="match_parent"
-
     tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/centered_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="36dp"
         android:contentDescription="@string/app_icon_description"
         android:src="@drawable/logoifbranco"
         app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_center"
@@ -34,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2" />
+        app:layout_constraintGuide_percent="0.3" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vertical_center"
@@ -126,20 +122,6 @@
         app:labelBehavior="visible"
         tools:value="6.0" />
 
-<!--    <com.google.android.material.slider.Slider-->
-<!--        android:id="@+id/sliderNota2"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="8dp"-->
-<!--        android:stepSize="0.1"-->
-<!--        android:valueFrom="0.0"-->
-<!--        android:valueTo="10.0"-->
-<!--        app:labelBehavior="visible"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/inputLayoutNota2"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/inputLayoutNota2"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/inputLayoutNota2"-->
-<!--        tools:value="7.0" />-->
-
     <!-- Barreira para posicionar o botão abaixo de ambos os inputs -->
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier_inputs"
@@ -148,16 +130,6 @@
         app:barrierDirection="bottom"
         app:constraint_referenced_ids="inputLayoutNota1,inputLayoutNota2,sliderNota2" />
 
-    <!-- Botão Calcular Média -->
-<!--    <Button-->
-<!--        android:id="@+id/buttonCalcularMedia"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="24dp"-->
-<!--        android:text="@string/button_calcular_media"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/barrier_inputs" />-->
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayoutResultadoMedia"
@@ -188,24 +160,35 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+       <Button
+        android:id="@+id/buttonZerar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/zerar"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/inputLayoutResultadoMedia"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
     <ImageView
-        android:id="@+id/imageView"
         android:layout_width="146dp"
         android:layout_height="60dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_center"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputLayoutResultadoMedia"
+        app:layout_constraintTop_toBottomOf="@+id/buttonZerar"
         app:srcCompat="@drawable/formula1" />
 
     <ImageView
-        android:id="@+id/imageView2"
         android:layout_width="173dp"
         android:layout_height="60dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline_vertical_center"
-        app:layout_constraintTop_toBottomOf="@+id/inputLayoutResultadoMedia"
+        app:layout_constraintTop_toBottomOf="@+id/buttonZerar"
         app:srcCompat="@drawable/legenda1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

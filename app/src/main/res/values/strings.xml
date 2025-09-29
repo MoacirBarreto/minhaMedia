@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_icon_description">Minha Media Final 000</string>
+    <string name="app_icon_description">Minha Media Final</string>
     <string name="app_name">Minha Média Final</string>
 
     <string name="button_calcular_media">Calcular Média</string>
@@ -11,5 +11,6 @@
     <string name="label_nota1">Nota 1</string>
     <string name="label_nota2">Nota 2</string>
     <string name="hint_digite_nota2">Digite Nota 2</string>
+    <string name="zerar">Zerar</string>
 
 </resources>
